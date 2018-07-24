@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>使用Gulp 實現 LiveReload + SCSS 開發環境 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SCSS 簡單來說是加強版的 CSS，可以增進編寫 CSS 的效率。而 Livereload 則是自動重新整理網頁，可以省下讓我們省下按 F5 的力氣。這兩個東西目前是我在每一個專案都會使用到的功能，剛好最近接觸到 Gulp 這個自動化工具，所以決定試著做出一個屬於我自己的自動化流程工具。">
+<meta name="keywords" content="Gulp SCSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Gulp 實現 LiveReload + SCSS 開發環境">
+<meta property="og:url" content="https://blog.newtchen.me/post/使用gulp-實現LiveReload-scss開發環境.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="SCSS 簡單來說是加強版的 CSS，可以增進編寫 CSS 的效率。而 Livereload 則是自動重新整理網頁，可以省下讓我們省下按 F5 的力氣。這兩個東西目前是我在每一個專案都會使用到的功能，剛好最近接觸到 Gulp 這個自動化工具，所以決定試著做出一個屬於我自己的自動化流程工具。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Gulp 實現 LiveReload + SCSS 開發環境">
+<meta name="twitter:description" content="SCSS 簡單來說是加強版的 CSS，可以增進編寫 CSS 的效率。而 Livereload 則是自動重新整理網頁，可以省下讓我們省下按 F5 的力氣。這兩個東西目前是我在每一個專案都會使用到的功能，剛好最近接觸到 Gulp 這個自動化工具，所以決定試著做出一個屬於我自己的自動化流程工具。">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">使用Gulp 實現 LiveReload + SCSS 開發環境</h1>
+      <section class="post-meta">
+  <time datetime="2015-05-11T14:23:07.000Z" itemprop="datePublished" class="post-date">
+      2015-05-11
+  </time>
+  
+  
+  on 
+  <a href='/tags/Gulp-SCSS/'>Gulp SCSS</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.748Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>SCSS 簡單來說是加強版的 CSS，可以增進編寫 CSS 的效率。而 Livereload 則是自動重新整理網頁，可以省下讓我們省下按 F5 的力氣。這兩個東西目前是我在每一個專案都會使用到的功能，剛好最近接觸到 Gulp 這個自動化工具，所以決定試著做出一個屬於我自己的自動化流程工具。<br><a id="more"></a></p>
+<h2 id="參考與學習資源"><a href="#參考與學習資源" class="headerlink" title="參考與學習資源"></a>參考與學習資源</h2><p>要使用 Gulp來同時實現SCSS及livereload，我基本上就是將下面兩個功能寫到同一支gulpfile.js裡面，同時選擇不用安裝chrome-extension的作法。<br><a href="http://michaelhsu.tw/2014/06/11/gulp-livereload/" target="_blank" rel="noopener">gulp執行livereload</a><br><a href="http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html" target="_blank" rel="noopener">gulp 編譯 scss</a><br><a href="http://andyyou.logdown.com/posts/223484-using-gulp-for-front-end-development-server" target="_blank" rel="noopener">gulp執行livereload 不用加裝chrome-extension</a></p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><p>安裝全域 gulp<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-cli -g</span><br></pre></td></tr></table></figure></p>
+<h2 id="整合步驟簡要說明"><a href="#整合步驟簡要說明" class="headerlink" title="整合步驟簡要說明"></a>整合步驟簡要說明</h2><pre><code>1. 安裝ruby
+    因為我是使用windows系統，所以使用(RubyInstaller)[http://rubyinstaller.org/]。
+2. 安裝compass
+    `gem install compass`
+3. 進入專案目錄，初始化npm，Managing module dependencies。
+    `npm init`
+4. 安裝所需套件：
+    要達成所需功能，需要以下4個套件，缺一不可。
+    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp --save-dev</span><br><span class="line">npm install gulp gulp-livereload --save-dev</span><br><span class="line">npm install gulp gulp-compass -save-dev</span><br><span class="line">npm install gulp-connect --save-dev</span><br><span class="line">簡寫：</span><br><span class="line">npm i -D gulp gulp-livereload gulp-compass gulp-connect</span><br></pre></td></tr></table></figure>
+
+6. 編寫gulpfile.js
+    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp= <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">	connect= <span class="built_in">require</span>(<span class="string">'gulp-connect'</span>);</span><br><span class="line">  compass   = <span class="built_in">require</span>(<span class="string">'gulp-compass'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'compass'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  gulp.src(<span class="string">'sass/*.*'</span>)</span><br><span class="line">    .pipe(compass(&#123;</span><br><span class="line"><span class="comment">// config_file: './style/scss/config.rb',</span></span><br><span class="line">        css: <span class="string">'.tmp/'</span>,   <span class="comment">//輸出位置</span></span><br><span class="line">        sass: <span class="string">'sass/'</span>,  <span class="comment">//來源位置</span></span><br><span class="line">        style: <span class="string">'compact'</span>, <span class="comment">//nested, expanded, compact, compressed 壓縮格式</span></span><br><span class="line">				comments: <span class="literal">false</span>, <span class="comment">//是否要註解 預設為true</span></span><br><span class="line">          &#125;))</span><br><span class="line">          .pipe(gulp.dest(<span class="string">'.tmp'</span>)); <span class="comment">//輸出位置，非必要</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'server'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	connect.server(&#123;</span><br><span class="line">		livereload:<span class="literal">true</span>,</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'reload'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	gulp.src(<span class="string">'*.html'</span>)</span><br><span class="line">		.pipe(connect.reload());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	gulp.watch(<span class="string">'*.html'</span>,[<span class="string">'reload'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'sass/*.*'</span>,[<span class="string">'compass'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'.tmp/*.css'</span>,[<span class="string">'reload'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>,[<span class="string">'server'</span>,<span class="string">'watch'</span>]);</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="資料夾結構說明："><a href="#資料夾結構說明：" class="headerlink" title="資料夾結構說明："></a>資料夾結構說明：</h1><p>sass 資料夾內放xxx.scss，然後自動轉換成xxx.css檔案放在 .tmp的資料夾內。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/使用gulp-實現LiveReload-scss開發環境.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/使用gulp-實現LiveReload-scss開發環境.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/使用gulp-實現LiveReload-scss開發環境.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/更換-hexo-主題.html" title="更換 Hexo 主題">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/gulp-入門.html" title="gulp 入門">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

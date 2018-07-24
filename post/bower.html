@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Bower簡單入門 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="目前絕大多數人在寫網頁時，難免會引用不少相關套件來輔助開發，畢竟 GitHub上有許許多多大神們的各式心血結晶啊，好套件不用嗎！而 Bower的作用就在於協助我們管理我們在一個專案中所使用的大大小小前端套件，自動處理下載更新，或是相依性等問題。不過後來發現，越來越強大的 npm似乎讓 Bower顯得不是那麼重要了。">
+<meta name="keywords" content="Bower">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bower簡單入門">
+<meta property="og:url" content="https://blog.newtchen.me/post/bower.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="目前絕大多數人在寫網頁時，難免會引用不少相關套件來輔助開發，畢竟 GitHub上有許許多多大神們的各式心血結晶啊，好套件不用嗎！而 Bower的作用就在於協助我們管理我們在一個專案中所使用的大大小小前端套件，自動處理下載更新，或是相依性等問題。不過後來發現，越來越強大的 npm似乎讓 Bower顯得不是那麼重要了。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bower簡單入門">
+<meta name="twitter:description" content="目前絕大多數人在寫網頁時，難免會引用不少相關套件來輔助開發，畢竟 GitHub上有許許多多大神們的各式心血結晶啊，好套件不用嗎！而 Bower的作用就在於協助我們管理我們在一個專案中所使用的大大小小前端套件，自動處理下載更新，或是相依性等問題。不過後來發現，越來越強大的 npm似乎讓 Bower顯得不是那麼重要了。">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Bower簡單入門</h1>
+      <section class="post-meta">
+  <time datetime="2015-05-23T04:03:14.000Z" itemprop="datePublished" class="post-date">
+      2015-05-23
+  </time>
+  
+  
+  on 
+  <a href='/tags/Bower/'>Bower</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.744Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>目前絕大多數人在寫網頁時，難免會引用不少相關套件來輔助開發，畢竟 GitHub上有許許多多大神們的各式心血結晶啊，好套件不用嗎！而 Bower的作用就在於協助我們管理我們在一個專案中所使用的大大小小前端套件，自動處理下載更新，或是相依性等問題。不過後來發現，越來越強大的 npm似乎讓 Bower顯得不是那麼重要了。</p>
+<a id="more"></a>
+<h2 id="沒有-Bower的時候"><a href="#沒有-Bower的時候" class="headerlink" title="沒有 Bower的時候"></a>沒有 Bower的時候</h2><p>當我們還沒有使用 Bower的時候，要引用某個套件時，又或者是要更新套件版本的時候，往往是：</p>
+<ol>
+<li>google該套件官網，通常最後會從 GitHub上抓下來。</li>
+<li>找看看有沒有CDN，直接一行程式碼引用。</li>
+<li>嫌麻煩，直接舊版沿用算了…</li>
+</ol>
+<p>Bower 就是為了解決這類麻煩而存在的。</p>
+<h2 id="安裝-Bower"><a href="#安裝-Bower" class="headerlink" title="安裝 Bower"></a>安裝 Bower</h2><p>先裝好 Node.js，然後使用 npm輕鬆下載：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install Bower -g</span><br></pre></td></tr></table></figure></p>
+<h2 id="搜尋套件"><a href="#搜尋套件" class="headerlink" title="搜尋套件"></a>搜尋套件</h2><ol>
+<li>利用<a href="http://Bower.io/search/" target="_blank" rel="noopener">Search Bower package</a> 網頁搜尋。</li>
+<li>使用指令搜尋。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Bower search &lt;package-name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Bower的使用"><a href="#Bower的使用" class="headerlink" title="Bower的使用"></a>Bower的使用</h2><p>這裡簡單說幾個最常用的指令，大概可以涵蓋日常開發80%的用途，其餘比較詳細專業的操作就等需要用到的時候再去查一下囉～</p>
+<h3 id="CD進入project目錄後"><a href="#CD進入project目錄後" class="headerlink" title="CD進入project目錄後"></a>CD進入project目錄後</h3><ol>
+<li>查詢指令 <code>bower -help</code></li>
+<li>搜尋套件 <code>bower search &lt;package-name&gt;</code></li>
+<li>安裝套件 <code>bower install &lt;package-name&gt;</code> ，<ul>
+<li>例如 <code>bower install bootstrap</code>。</li>
+<li>預設會將套件安裝至專案目錄下的 bower_components。</li>
+</ul>
+</li>
+<li>指定版本並更名<code>bower install &lt;name&gt;=&lt;package-name&gt;#&lt;version&gt;</code><ul>
+<li>例如 <code>bower install renameFolder=jquery#1.9</code></li>
+</ul>
+</li>
+<li>查詢目前安裝套件<code>bower list</code></li>
+<li>更新套件 <code>bower update &lt;package name&gt;</code></li>
+<li>刪除套件 <code>bower uninstall</code><ul>
+<li>例如<code>bower uninstall renameFolder</code></li>
+</ul>
+</li>
+<li>建立 package.json <code>npm init</code><h3 id="Bower設定"><a href="#Bower設定" class="headerlink" title="Bower設定"></a>Bower設定</h3>要在專案資料夾底下創立一個<code>&quot;.bowercc&quot;</code>檔案，以下為<a href="http://Bower.io/docs/config/" target="_blank" rel="noopener">官網範例</a>。<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">// Bower can be configured using JSON in a .Bowerrc</span><br><span class="line">// file. For example:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"directory"</span>: <span class="string">"app/components/"</span>,</span><br><span class="line">  <span class="attr">"timeout"</span>: <span class="number">120000</span>,</span><br><span class="line">  <span class="attr">"registry"</span>: &#123;</span><br><span class="line">    <span class="attr">"search"</span>: [</span><br><span class="line">      <span class="string">"http://localhost:8000"</span>,</span><br><span class="line">      <span class="string">"https://Bower.herokuapp.com"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通常設定Bower的目的都是為了自訂下載路徑，基本上留著第一行就可以了。其他詳細內容請查詢<a href="https://GitHub.com/Bower/spec/blob/master/config.md" target="_blank" rel="noopener">官方文檔</a>。</p>
+<h2 id="參考及學習資源"><a href="#參考及學習資源" class="headerlink" title="參考及學習資源"></a>參考及學習資源</h2><p><a href="http://Bower.io/" target="_blank" rel="noopener">Bower</a><br><a href="http://iambigd.blogspot.tw/2014/06/javascript-Bower-javascript.html" target="_blank" rel="noopener">Bower javascript套件管理工具 初探</a><br><a href="http://jsnwork.kiiuo.com/archives/2120/Bower-%E5%AE%89%E8%A3%9D%E8%88%87%E7%99%BC%E4%BD%88%E5%B0%81%E5%8C%85" target="_blank" rel="noopener">Bower – 安裝與發佈封包 (windows)</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/bower.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/bower.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/bower.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/CSS版面設定基礎.html" title="CSS 版面設定基礎">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/更換-hexo-主題.html" title="更換 Hexo 主題">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

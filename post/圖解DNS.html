@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>圖解DNS | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="偶然看到國外有大神製作了一個網站，用圖片加上說故事的方式來解釋DNS的運作流程，總體而言非常淺顯易懂，很適合沒有相關概念卻想了解DNS的人好好看一下。就連我看完都覺得受益良多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圖解DNS">
+<meta property="og:url" content="https://blog.newtchen.me/post/圖解DNS.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="偶然看到國外有大神製作了一個網站，用圖片加上說故事的方式來解釋DNS的運作流程，總體而言非常淺顯易懂，很適合沒有相關概念卻想了解DNS的人好好看一下。就連我看完都覺得受益良多。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="圖解DNS">
+<meta name="twitter:description" content="偶然看到國外有大神製作了一個網站，用圖片加上說故事的方式來解釋DNS的運作流程，總體而言非常淺顯易懂，很適合沒有相關概念卻想了解DNS的人好好看一下。就連我看完都覺得受益良多。">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">圖解DNS</h1>
+      <section class="post-meta">
+  <time datetime="2015-08-30T07:18:13.000Z" itemprop="datePublished" class="post-date">
+      2015-08-30
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.748Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>偶然看到國外有大神製作了一個網站，用圖片加上說故事的方式來解釋DNS的運作流程，總體而言非常淺顯易懂，很適合沒有相關概念卻想了解DNS的人好好看一下。就連我看完都覺得受益良多。<br><a id="more"></a><br><a href="https://howdns.works/episodes/" target="_blank" rel="noopener">圖解DNS</a></p>
+<p>更重要的是它整個網站設計很有質感，也有做到響應式設計，非常接近我心目中新時代傳遞知識的有效方式。我一直認為網站不僅僅只是內容的載體，同時也應該要透過精巧的設計，運用動畫、布局與排版來幫助讀者更容易了解網站上所乘載的內容，如此一來才是一個專業的網站。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/圖解DNS.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/圖解DNS.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/圖解DNS.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/hexo備份與轉移.html" title="hexo備份與轉移">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/Emmet-快速小範例.html" title="Emmet 快速小範例">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

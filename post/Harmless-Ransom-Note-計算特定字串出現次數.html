@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Harmless Ransom Note 計算特定字串出現次數 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Harmless Ransom Note 計算特定字串出現次數concept// return true/falsefunction harmlessRansomNote (noteText, magazineText) &amp;#123;    ...&amp;#125; 判斷 magazineText 中是否有足夠單詞供 noteText 使用。 example code// 為了簡化問題，假設 text">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harmless Ransom Note 計算特定字串出現次數">
+<meta property="og:url" content="https://blog.newtchen.me/post/Harmless-Ransom-Note-計算特定字串出現次數.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Harmless Ransom Note 計算特定字串出現次數concept// return true/falsefunction harmlessRansomNote (noteText, magazineText) &amp;#123;    ...&amp;#125; 判斷 magazineText 中是否有足夠單詞供 noteText 使用。 example code// 為了簡化問題，假設 text">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Harmless Ransom Note 計算特定字串出現次數">
+<meta name="twitter:description" content="Harmless Ransom Note 計算特定字串出現次數concept// return true/falsefunction harmlessRansomNote (noteText, magazineText) &amp;#123;    ...&amp;#125; 判斷 magazineText 中是否有足夠單詞供 noteText 使用。 example code// 為了簡化問題，假設 text">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Harmless Ransom Note 計算特定字串出現次數</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-24T14:44:46.000Z" itemprop="datePublished" class="post-date">
+      2018-07-24
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <h1 id="Harmless-Ransom-Note-計算特定字串出現次數"><a href="#Harmless-Ransom-Note-計算特定字串出現次數" class="headerlink" title="Harmless Ransom Note 計算特定字串出現次數"></a>Harmless Ransom Note 計算特定字串出現次數</h1><h2 id="concept"><a href="#concept" class="headerlink" title="concept"></a>concept</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// return true/false</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">harmlessRansomNote</span> (<span class="params">noteText, magazineText</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判斷 magazineText 中是否有足夠單詞供 noteText 使用。</p>
+<h2 id="example-code"><a href="#example-code" class="headerlink" title="example code"></a>example code</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 為了簡化問題，假設 text 都使用小寫的一般單字</span></span><br><span class="line"><span class="keyword">const</span> harmlessRansomNote = <span class="function">(<span class="params">noteText, magazineText</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> note_array = noteText.split(<span class="string">` `</span>);</span><br><span class="line">    <span class="keyword">const</span> magazine_array = magazineText.split(<span class="string">` `</span>);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// hash table like this:</span></span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//   apple: 1,</span></span><br><span class="line">    <span class="comment">//   cat : 2,</span></span><br><span class="line">    <span class="comment">//   ...</span></span><br><span class="line">    <span class="comment">//	&#125;</span></span><br><span class="line">    <span class="keyword">const</span> magazineHashTable = (<span class="function"><span class="params">words_array</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> table = &#123;&#125;;</span><br><span class="line">        words_array.forEach(<span class="function"><span class="params">word</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!table[word]) table[word] = <span class="number">0</span>;</span><br><span class="line">            table[word]++;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> table;</span><br><span class="line">    &#125;)(magazine_array);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; note_array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> word = note_array[i];</span><br><span class="line">        <span class="keyword">if</span> (magazineHashTable[word])</span><br><span class="line">            magazineHashTable[word]--;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">    harmlessRansomNote(</span><br><span class="line">        <span class="string">`this is for`</span>,</span><br><span class="line">        <span class="string">`this is a testing article for testing`</span></span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h2><p><code>O(n)+O(m)</code><br>=&gt; <code>O(n+m)</code><br>=&gt;<code>O(n)</code></p>
+<p>有兩個 Linear 迴圈，<br>但是彼此沒有嵌套關係。</p>
+<p>實務上，我們最終會把這種函數的時間複雜度寫成 O(n)</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Harmless-Ransom-Note-計算特定字串出現次數.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Harmless-Ransom-Note-計算特定字串出現次數.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Harmless-Ransom-Note-計算特定字串出現次數.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/is-Palindrome.html" title="is Palindrome">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/FizzBuzz.html" title="Fizz Buzz">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

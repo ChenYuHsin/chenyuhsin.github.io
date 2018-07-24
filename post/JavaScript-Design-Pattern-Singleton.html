@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>JavaScript Design Pattern: Singleton | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="簡述 Singleton 單例一個 class 只能有一個 instance，就算多次 new 該 class，也只會 return 第一次 new 出來的 instance from “Learning JavaScript Design Patterns” Classically, the Singleton pattern can be implemented by creating a c">
+<meta name="keywords" content="javascript,design_pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Design Pattern: Singleton">
+<meta property="og:url" content="https://blog.newtchen.me/post/JavaScript-Design-Pattern-Singleton.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="簡述 Singleton 單例一個 class 只能有一個 instance，就算多次 new 該 class，也只會 return 第一次 new 出來的 instance from “Learning JavaScript Design Patterns” Classically, the Singleton pattern can be implemented by creating a c">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript Design Pattern: Singleton">
+<meta name="twitter:description" content="簡述 Singleton 單例一個 class 只能有一個 instance，就算多次 new 該 class，也只會 return 第一次 new 出來的 instance from “Learning JavaScript Design Patterns” Classically, the Singleton pattern can be implemented by creating a c">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">JavaScript Design Pattern: Singleton</h1>
+      <section class="post-meta">
+  <time datetime="2018-06-25T16:43:00.000Z" itemprop="datePublished" class="post-date">
+      2018-06-26
+  </time>
+  
+  
+  on 
+  <a href='/tags/javascript/'>javascript</a>,
+  
+  <a href='/tags/design-pattern/'>design_pattern</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.744Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <h2 id="簡述-Singleton-單例"><a href="#簡述-Singleton-單例" class="headerlink" title="簡述 Singleton 單例"></a>簡述 Singleton 單例</h2><p>一個 class 只能有一個 instance，<br>就算多次 new 該 class，<br>也只會 return 第一次 new 出來的 instance</p>
+<h2 id="from-“Learning-JavaScript-Design-Patterns”"><a href="#from-“Learning-JavaScript-Design-Patterns”" class="headerlink" title="from “Learning JavaScript Design Patterns”"></a>from “Learning JavaScript Design Patterns”</h2><blockquote>
+<p>Classically, the Singleton pattern can be implemented by creating a class with a method that creates a new instance of the class if one doesn’t exist. In the event of an instance already existing, it simply returns a reference to that object.</p>
+</blockquote>
+<h2 id="ES6-實踐方式"><a href="#ES6-實踐方式" class="headerlink" title="ES6 實踐方式"></a>ES6 實踐方式</h2><h3 id="一般-class"><a href="#一般-class" class="headerlink" title="一般 class"></a>一般 class</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> man1 = <span class="keyword">new</span> Person(<span class="string">'Mike'</span>, <span class="number">20</span>);</span><br><span class="line"><span class="keyword">let</span> man2 = <span class="keyword">new</span> Person(<span class="string">'Newt'</span>, <span class="number">99</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="singleton-class"><a href="#singleton-class" class="headerlink" title="singleton class"></a>singleton class</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonPerson</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age)&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> getInstance(name, age)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onlyIntance)&#123;</span><br><span class="line">      <span class="keyword">this</span>.onlyIntance = <span class="keyword">new</span> SingletonPerson(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.onlyInstance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> man1 = SingletonPerson.getInstance(<span class="string">'Bob'</span>, <span class="number">99</span>);</span><br><span class="line"><span class="keyword">let</span> man2 = SingletonPerson.getIntance(<span class="string">'Peter'</span>, <span class="number">77</span>);</span><br><span class="line"><span class="built_in">console</span>.log(man1 === man2); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://zhuanlan.zhihu.com/p/34754447" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34754447</a></p>
+<p><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/" target="_blank" rel="noopener">https://addyosmani.com/resources/essentialjsdesignpatterns/book/</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/JavaScript-Design-Pattern-Singleton.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/JavaScript-Design-Pattern-Singleton.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/JavaScript-Design-Pattern-Singleton.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/JavaScript/JavaScript-中的-NaN-isNaN.html" title="JavaScript 中的 NaN, isNaN ">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/f2e/2017-0321-用-Gulp-架設靜態網頁開發環境.html" title="用 Gulp 架設靜態網頁開發環境">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

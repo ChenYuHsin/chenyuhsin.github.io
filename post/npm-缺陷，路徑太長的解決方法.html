@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>npm 缺陷，路徑太長的解決方法 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="似乎是因為套件相依性的關係，當我在使用npm下載套件或是要刪除套件時，接連發生過好幾次”資料夾名稱太長”導致windows無法新增刪除的狀況…">
+<meta name="keywords" content="npm,路徑太長">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm 缺陷，路徑太長的解決方法">
+<meta property="og:url" content="https://blog.newtchen.me/post/npm-缺陷，路徑太長的解決方法.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="似乎是因為套件相依性的關係，當我在使用npm下載套件或是要刪除套件時，接連發生過好幾次”資料夾名稱太長”導致windows無法新增刪除的狀況…">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://blog.newtchen.me/images/npm_too_long/PATH1.png">
+<meta property="og:image" content="https://blog.newtchen.me/images/npm_too_long/PATH2.png">
+<meta property="og:image" content="https://blog.newtchen.me/images/npm_too_long/7zip.png">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm 缺陷，路徑太長的解決方法">
+<meta name="twitter:description" content="似乎是因為套件相依性的關係，當我在使用npm下載套件或是要刪除套件時，接連發生過好幾次”資料夾名稱太長”導致windows無法新增刪除的狀況…">
+<meta name="twitter:image" content="https://blog.newtchen.me/images/npm_too_long/PATH1.png">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">npm 缺陷，路徑太長的解決方法</h1>
+      <section class="post-meta">
+  <time datetime="2016-05-24T07:26:14.000Z" itemprop="datePublished" class="post-date">
+      2016-05-24
+  </time>
+  
+  
+  on 
+  <a href='/tags/npm/'>npm</a>,
+  
+  <a href='/tags/路徑太長/'>路徑太長</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.748Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>似乎是因為套件相依性的關係，當我在使用npm下載套件或是要刪除套件時，接連發生過好幾次”資料夾名稱太長”導致windows無法新增刪除的狀況…<br><a id="more"></a></p>
+<p>經過googlev一些資料後，確認這是npm在Windows平台上的天生缺陷，因為 Windows 作業系統有路徑檔名的限制（完整的檔名必須少於 260 個字元，並且目錄名稱必須少於 248 個字元）。</p>
+<h1 id="兩個問題"><a href="#兩個問題" class="headerlink" title="兩個問題"></a>兩個問題</h1><p>我目前遇到它會造成的問題就是：</p>
+<ol>
+<li>套件抓不下來</li>
+<li>套件資料夾（node_modules）刪不掉</li>
+</ol>
+<p>以下依序介紹兩種問題的解決方法。</p>
+<h1 id="套件抓不下來—解法"><a href="#套件抓不下來—解法" class="headerlink" title="套件抓不下來—解法"></a>套件抓不下來—解法</h1><p>這是從大神<code>保哥</code>網站上看到的解決方法，但是<code>不一定有效</code>！我們要做的就是變更 Node.js / npm 全域模組的預設安裝路徑。</p>
+<h2 id="預設安裝路徑"><a href="#預設安裝路徑" class="headerlink" title="預設安裝路徑"></a>預設安裝路徑</h2><p>由於在 Windows 平台預設的 npm 全域模組安裝路徑為 <code>%APPDATA%\npm</code>，當使用者帳號比較長一點，例如常用的Administrator時，npm的安裝路徑就會是 <code>C:\Users\Administrator\AppData\Roaming\npm</code>，超過Windows限制字元數的機率就是很大。</p>
+<h2 id="縮短路徑"><a href="#縮短路徑" class="headerlink" title="縮短路徑"></a>縮短路徑</h2><p>改變 Node.js / npm 全域模組的預設安裝路徑(例如 <code>C:\Users\Administrtor\AppData\Roaming\npm</code>），把路徑縮短，那麼成功率就會提高，但還是有可能會失敗，就是當套件本身的資料夾層級就已經超過Windows限制時，那我們就也真的沒有法子了…</p>
+<h2 id="新創npm資料夾為預設路徑"><a href="#新創npm資料夾為預設路徑" class="headerlink" title="新創npm資料夾為預設路徑"></a>新創npm資料夾為預設路徑</h2><p>先準備好一個資料夾 ( C:\npm )<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir c:\npm</span><br></pre></td></tr></table></figure></p>
+<p>修改npm的設定檔<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config set prefix &quot;C:\npm&quot; -g</span><br></pre></td></tr></table></figure></p>
+<p>這樣一來預設安裝路徑就會變成<code>C:\npm</code>，是不是短了很多呢！</p>
+<h2 id="修改PATH環境變數"><a href="#修改PATH環境變數" class="headerlink" title="修改PATH環境變數"></a>修改PATH環境變數</h2><p>將原本的 npm 安裝路徑變更到新指定的目錄下，因為你安裝的全域模組預設會在 prefix 目錄下建立一個相對應的 .cmd 批次檔，方便你在命令提示字元下執行 node.js 工具程式，所以得要跟著一起修改它的設定。</p>
+<p><img src="/images/npm_too_long/PATH1.png" alt="修改PATH環境變數"><br><img src="/images/npm_too_long/PATH2.png" alt="修改PATH環境變數"></p>
+<p>以上圖片引用於（<a href="http://blog.miniasp.com/post/2015/09/01/Change-npm-default-global-installation-directory-for-nodejs-modules-in-Windows.aspx）" target="_blank" rel="noopener">http://blog.miniasp.com/post/2015/09/01/Change-npm-default-global-installation-directory-for-nodejs-modules-in-Windows.aspx）</a></p>
+<h1 id="node-modules刪不掉—解法"><a href="#node-modules刪不掉—解法" class="headerlink" title="node_modules刪不掉—解法"></a>node_modules刪不掉—解法</h1><p>要刪除層級太深的資料夾比較簡單，我們要借助linux中的刪除指令，將它們全數刪除。</p>
+<h2 id="方法一：使用rm指令"><a href="#方法一：使用rm指令" class="headerlink" title="方法一：使用rm指令"></a>方法一：使用rm指令</h2><p>進入專案資料夾。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd work_directory</span><br></pre></td></tr></table></figure></p>
+<p>刪除資料夾<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure></p>
+<p>到此就清除乾淨囉！</p>
+<h2 id="rm指令簡介"><a href="#rm指令簡介" class="headerlink" title="rm指令簡介"></a>rm指令簡介</h2><p>指令名稱：rm<br>功能說明：刪除檔案或目錄<br>語法：rm [options] file</p>
+<p>[options]<br>-d：直接刪除一個目錄，既使目錄不是空的，super user 才可以用。<br>-f：–force 就是強制刪除檔案或目錄。<br>-i：執行前提供使用者確認。<br>-r, -R：–recursive遞迴處理，將指定的目錄下所有的檔案與子目錄一併處理。</p>
+<p>範例：<br>1.刪除目錄node_modules中所有的檔案和子目錄<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>使用這個指令時一定要再三確認要刪除的資料夾是不是對的，有沒有進錯路徑，有沒有打錯字。不然刪錯資料就死定囉～</p>
+<h2 id="方法二：使用7-zip"><a href="#方法二：使用7-zip" class="headerlink" title="方法二：使用7-zip"></a>方法二：使用7-zip</h2><p>偶然在網路上發現有人分享的小方法，可以借助7-zip來刪除過長路經的資料夾。開啟7-zip之後，對要刪除的資料夾用 <code>shift</code> + 點擊上面的<code>刪除</code>即可。有在使用7-zip的人嘗試看看，我是覺得還滿方便的啦！<br><img src="/images/npm_too_long/7zip.png" alt="7zi刪除檔案"></p>
+<h1 id="參考與資料來源"><a href="#參考與資料來源" class="headerlink" title="參考與資料來源"></a>參考與資料來源</h1><p><a href="http://blog.xuite.net/altohorn/linux/17259898-rm+%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%E6%88%96%E7%9B%AE%E9%8C%84" target="_blank" rel="noopener">rm 刪除檔案或目錄</a></p>
+<p><a href="http://blog.miniasp.com/post/2015/09/01/Change-npm-default-global-installation-directory-for-nodejs-modules-in-Windows.aspx" target="_blank" rel="noopener">如何在 Windows 平台變更 Node.js / npm 全域模組的預設安裝路徑</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/npm-缺陷，路徑太長的解決方法.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/npm-缺陷，路徑太長的解決方法.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/npm-缺陷，路徑太長的解決方法.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/2016-0722-robots-txt-拒絕網路蜘蛛搜尋所有資料.html" title="robots.txt 拒絕網路蜘蛛搜尋所有資料">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/meta-tag-簡單介紹.html" title="meta tag 簡單介紹">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

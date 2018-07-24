@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Big O Notation, Time Complexity 衡量程式碼效率 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Big O Notation, Time Complexity 衡量程式碼效率同樣的需求，可能可以寫出很多種不同的 function 來解決，那我們如何決定哪一種解法比較好呢？Big O 與 Time Complexity 便是用來衡量 function 運行效率的兩種指標。 我們通常根據“ 輸入函式的資料量增加時，執行時間會拉長多少？ “來作為衡量效率的標準  Big O Notation 代表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Big O Notation, Time Complexity 衡量程式碼效率">
+<meta property="og:url" content="https://blog.newtchen.me/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Big O Notation, Time Complexity 衡量程式碼效率同樣的需求，可能可以寫出很多種不同的 function 來解決，那我們如何決定哪一種解法比較好呢？Big O 與 Time Complexity 便是用來衡量 function 運行效率的兩種指標。 我們通常根據“ 輸入函式的資料量增加時，執行時間會拉長多少？ “來作為衡量效率的標準  Big O Notation 代表">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531755698666.png?raw=true">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Big O Notation, Time Complexity 衡量程式碼效率">
+<meta name="twitter:description" content="Big O Notation, Time Complexity 衡量程式碼效率同樣的需求，可能可以寫出很多種不同的 function 來解決，那我們如何決定哪一種解法比較好呢？Big O 與 Time Complexity 便是用來衡量 function 運行效率的兩種指標。 我們通常根據“ 輸入函式的資料量增加時，執行時間會拉長多少？ “來作為衡量效率的標準  Big O Notation 代表">
+<meta name="twitter:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531755698666.png?raw=true">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Big O Notation, Time Complexity 衡量程式碼效率</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-24T14:20:00.000Z" itemprop="datePublished" class="post-date">
+      2018-07-24
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <h1 id="Big-O-Notation-Time-Complexity-衡量程式碼效率"><a href="#Big-O-Notation-Time-Complexity-衡量程式碼效率" class="headerlink" title="Big O Notation, Time Complexity 衡量程式碼效率"></a>Big O Notation, Time Complexity 衡量程式碼效率</h1><p>同樣的需求，<br>可能可以寫出很多種不同的 function 來解決，<br>那我們如何決定哪一種解法比較好呢？<br>Big O 與 Time Complexity 便是用來衡量 function 運行效率的兩種指標。</p>
+<p>我們通常根據<br>“ 輸入函式的資料量增加時，執行時間會拉長多少？ “<br>來作為衡量效率的標準</p>
+<blockquote>
+<p>Big O Notation 代表演算法時間函式的上限（Upper bound），表示在最壞的狀況下，演算法的執行時間不會超過 Big-Ο。 </p>
+</blockquote>
+<h2 id="Constant-Run-Time-O-1"><a href="#Constant-Run-Time-O-1" class="headerlink" title="Constant Run Time, O(1)"></a>Constant Run Time, <code>O(1)</code></h2><p>這個演算法（函式）的執行時間不會隨著輸入資料量的增加而增加。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant Run Time：不會隨著輸入的資料量越大而使得執行時間變長</span></span><br><span class="line"><span class="comment"> * Big O Notation: "O(1)"</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arr[<span class="number">0</span>])</span><br><span class="line">  <span class="built_in">console</span>.log(arr[<span class="number">1</span>])</span><br><span class="line">&#125;</span><br><span class="line">log(arr1)    <span class="comment">// 1, 2</span></span><br><span class="line">log(arr2)    <span class="comment">// 1, 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="Linear-Run-Time-O-n"><a href="#Linear-Run-Time-O-n" class="headerlink" title="Linear Run Time, O(n)"></a>Linear Run Time, <code>O(n)</code></h2><p>輸入資料越多，<br>執行時間會等比例增加</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Linear Run Time: 隨著資料量的增加，執行時間會等比增加</span></span><br><span class="line"><span class="comment"> * Big O Notation: "O(n)"</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logAll(arr1)  <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">logAll(arr2)  <span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span></span><br></pre></td></tr></table></figure>
+<h2 id="Exponential-Run-Time-O-n-2"><a href="#Exponential-Run-Time-O-n-2" class="headerlink" title="Exponential Run Time, O(n^2)"></a>Exponential Run Time, <code>O(n^2)</code></h2><p>隨著輸入資料的增加，<br>執行時間呈現指數增長。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Exponential Run Time:  隨著資料量的增加，執行時間會誇張的增長</span></span><br><span class="line"><span class="comment"> * Big O Notation: "O(n^2)"</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addAndLog</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> item2 <span class="keyword">of</span> arr) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log (<span class="string">'First'</span>, item + item2)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">addAndLog(arr1)  <span class="comment">// 輸出 25 筆結果</span></span><br><span class="line">addAndLog(arr2)  <span class="comment">// 輸出 100 筆結果</span></span><br></pre></td></tr></table></figure>
+<h2 id="Logarithmic-Run-Time-O-log-n"><a href="#Logarithmic-Run-Time-O-log-n" class="headerlink" title="Logarithmic Run Time, O(log n)"></a>Logarithmic Run Time, <code>O(log n)</code></h2><p>隨著資料量增加，<br>執行時間雖然會增加，<br>但增加率是越來越低的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logarithmic Run Time: 隨著資料量增加，執行時間雖然會增加，但增加率會趨緩</span></span><br><span class="line"><span class="comment"> * Big O Notation: "O (log n)"</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span> (<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> low = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> high = arr.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> mid</span><br><span class="line">  <span class="keyword">let</span> element</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">    element = arr[mid]</span><br><span class="line">    <span class="keyword">if</span> (element &lt; key) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element &gt; key) &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(binarySearch(arr1, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">console</span>.log(binarySearch(arr2, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="illustration"><a href="#illustration" class="headerlink" title="illustration"></a>illustration</h2><p><img src="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531755698666.png?raw=true" alt="1531755698666"></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/Binary-Search.html" title="Binary Search">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/VS-Code-使用-zsh-當作-terminal.html" title="VS Code 使用 zsh 當作 terminal">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Binary Search | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Binary SearchConcept// return true of false to show that the sortedNumArr contains keyfunction binarySearch (sortedNumArr, key) &amp;#123;    ...&amp;#125; 輸入一個排序好的陣列，找出裡面是否還有 key Solution Codeconst binarySea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Search">
+<meta property="og:url" content="https://blog.newtchen.me/post/Binary-Search.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Binary SearchConcept// return true of false to show that the sortedNumArr contains keyfunction binarySearch (sortedNumArr, key) &amp;#123;    ...&amp;#125; 輸入一個排序好的陣列，找出裡面是否還有 key Solution Codeconst binarySea">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Binary Search">
+<meta name="twitter:description" content="Binary SearchConcept// return true of false to show that the sortedNumArr contains keyfunction binarySearch (sortedNumArr, key) &amp;#123;    ...&amp;#125; 輸入一個排序好的陣列，找出裡面是否還有 key Solution Codeconst binarySea">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Binary Search</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-24T14:38:54.000Z" itemprop="datePublished" class="post-date">
+      2018-07-24
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// return true of false to show that the sortedNumArr contains key</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span> (<span class="params">sortedNumArr, key</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>輸入一個排序好的陣列，<br>找出裡面是否還有 key</p>
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> binarySearch = <span class="function">(<span class="params">sortedArr, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> length = sortedArr.length;</span><br><span class="line">    <span class="keyword">const</span> middleIndex = <span class="built_in">Math</span>.floor(length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">const</span> middleOne = sortedArr[middleIndex];</span><br><span class="line">    <span class="keyword">if</span> (middleOne === num) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (length === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (middleOne &gt; num) &#123;</span><br><span class="line">            <span class="keyword">return</span> binarySearch(</span><br><span class="line">                sortedArr.splice(<span class="number">0</span>, middleIndex),</span><br><span class="line">                num</span><br><span class="line">            );</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> binarySearch(</span><br><span class="line">                sortedArr.splice(</span><br><span class="line">                    middleIndex,</span><br><span class="line">                    length - middleIndex</span><br><span class="line">                ),</span><br><span class="line">                num</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">    binarySearch([<span class="number">5</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">36</span>, <span class="number">39</span>, <span class="number">42</span>, <span class="number">56</span>, <span class="number">71</span>], <span class="number">3</span>)</span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Code-from-Learning-Algorithms"><a href="#Code-from-Learning-Algorithms" class="headerlink" title="Code from Learning Algorithms"></a>Code from <code>Learning Algorithms</code></h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">numArray, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> middleIdx = <span class="built_in">Math</span>.floor(numArray.length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">var</span> middleElem = numArray[middleIdx];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (middleElem === key) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (middleElem &lt; key &amp;&amp; numArray.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> binarySearch(numArray.splice(middleIdx, numArray.length), key);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (middleElem &gt; key &amp;&amp; numArray.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> binarySearch(numArray.splice(<span class="number">0</span>, middleIdx), key);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">binarySearch([<span class="number">5</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">36</span>, <span class="number">39</span>, <span class="number">42</span>, <span class="number">56</span>, <span class="number">71</span>], <span class="number">56</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.udemy.com/learning-algorithms-in-javascript-from-scratch/" target="_blank" rel="noopener">https://www.udemy.com/learning-algorithms-in-javascript-from-scratch/</a></p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank" rel="noopener">https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Binary-Search.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Binary-Search.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Binary-Search.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/Caesar-Cipher.html" title="Caesar Cipher 凱撒密碼">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html" title="Big O Notation, Time Complexity 衡量程式碼效率">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

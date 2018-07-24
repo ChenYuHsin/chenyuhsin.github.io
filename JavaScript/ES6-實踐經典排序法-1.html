@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>ES6 實踐經典排序法 (1) | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="最近覺得需要複習一下常用的排序方法，因為已經發生好幾次工作的時候需要用到排序，雖然記得各種排序大概架構，寫起來卻好像不是很順手… 看來記憶需要更新一下、加深印象了，同時也正好可以拿來熟悉一下 es6 的 array 處理方法">
+<meta name="keywords" content="es6,sorting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 實踐經典排序法 (1)">
+<meta property="og:url" content="https://blog.newtchen.me/JavaScript/ES6-實踐經典排序法-1.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="最近覺得需要複習一下常用的排序方法，因為已經發生好幾次工作的時候需要用到排序，雖然記得各種排序大概架構，寫起來卻好像不是很順手… 看來記憶需要更新一下、加深印象了，同時也正好可以拿來熟悉一下 es6 的 array 處理方法">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 實踐經典排序法 (1)">
+<meta name="twitter:description" content="最近覺得需要複習一下常用的排序方法，因為已經發生好幾次工作的時候需要用到排序，雖然記得各種排序大概架構，寫起來卻好像不是很順手… 看來記憶需要更新一下、加深印象了，同時也正好可以拿來熟悉一下 es6 的 array 處理方法">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">ES6 實踐經典排序法 (1)</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-09T06:11:57.000Z" itemprop="datePublished" class="post-date">
+      2018-07-09
+  </time>
+  
+  
+  on 
+  <a href='/tags/es6/'>es6</a>,
+  
+  <a href='/tags/sorting/'>sorting</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.744Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>最近覺得需要複習一下常用的排序方法，<br>因為已經發生好幾次工作的時候需要用到排序，<br>雖然記得各種排序大概架構，<br>寫起來卻好像不是很順手…</p>
+<p>看來記憶需要更新一下、加深印象了，<br>同時也正好可以拿來熟悉一下 es6 的 array 處理方法<br><a id="more"></a></p>
+<h2 id="產生隨機測試陣列"><a href="#產生隨機測試陣列" class="headerlink" title="產生隨機測試陣列"></a>產生隨機測試陣列</h2><p>為了測試排序結果，<br>需要每次產生一個隨機陣列</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 產生 min 到 max 間的亂數，包含 min, max</span></span><br><span class="line"><span class="keyword">const</span> getRandomNum = <span class="function">(<span class="params">min, max</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 產生長度為 length 的隨機陣列</span></span><br><span class="line"><span class="keyword">const</span> getTestArr = <span class="function">(<span class="params">&#123; length = <span class="number">10</span>, min = <span class="number">0</span>, max = <span class="number">10</span> &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> arr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    arr.push(getRandomNum(min, max));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 產生一個 10項，每項為 0~100 的 array</span></span><br><span class="line"><span class="keyword">const</span> testArr = getTestArr(&#123; <span class="attr">max</span>: <span class="number">100</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="排序過程動畫"><a href="#排序過程動畫" class="headerlink" title="排序過程動畫"></a>排序過程動畫</h2><p>動畫解釋排序法可以看超猛網站：<a href="https://visualgo.net/en/sorting" target="_blank" rel="noopener">VisuAlgo - Sorting (Bubble, Selection, Insertion, Merge, Quick, Counting, Radix)</a>，印象會更深刻</p>
+<h2 id="經典的排序法"><a href="#經典的排序法" class="headerlink" title="經典的排序法"></a>經典的排序法</h2><p>剛好看到 Huli 大大的 <a href="http://huli.logdown.com/posts/2223627-review-the-classical-sort-algorithm-with-javascript" target="_blank" rel="noopener">一起用 JavaScript 來複習經典排序法吧！</a>，<br>所以我也決定要自己試著實做出這些排序法。</p>
+<p>以下的範例程式碼，<br>可以直接貼到瀏覽器 console 中看結果</p>
+<h3 id="選擇排序法（Selection-Sort）"><a href="#選擇排序法（Selection-Sort）" class="headerlink" title="選擇排序法（Selection Sort）"></a>選擇排序法（Selection Sort）</h3><p>一次次找到最小的值，<br>並把它丟到 array 最左邊，<br>也可以想成先找到最小的值，<br>然後找第二小的值、第三小的值…</p>
+<p>整個排序法分為兩大迴圈，<br>外迴圈控制要把 testArr 每一項跑一遍，<br>內迴圈控制要把 minNum 與其後的每一項比大小</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = getTestArr(&#123; <span class="attr">max</span>: <span class="number">100</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> selectionSort = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> cloneArr = [...arr];</span><br><span class="line">  <span class="comment">// 外迴圈，整個 cloneArr 都要跑過一次，所以可以用 foreach</span></span><br><span class="line">  cloneArr.forEach(<span class="function">(<span class="params">num, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 每一次都會假設 i 最小</span></span><br><span class="line">    <span class="keyword">let</span> minIndex = i;</span><br><span class="line">    <span class="keyword">let</span> minNum = num;</span><br><span class="line">    <span class="comment">// 內迴圈，目的是要取出 i 項之後最小的值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt; cloneArr.length; j++) &#123;</span><br><span class="line">      <span class="keyword">const</span> num = cloneArr[j];</span><br><span class="line">      <span class="keyword">if</span> (minNum &gt; num) &#123;</span><br><span class="line">        minNum = num;</span><br><span class="line">        minIndex = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 對調</span></span><br><span class="line">    [cloneArr[i], cloneArr[minIndex]] = [cloneArr[minIndex], cloneArr[i]];</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> cloneArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'sort'</span>, selectionSort(testArr));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="泡沫排序法（Bubble-Sort）"><a href="#泡沫排序法（Bubble-Sort）" class="headerlink" title="泡沫排序法（Bubble Sort）"></a>泡沫排序法（Bubble Sort）</h3><p>兩兩比對，大的數往右邊丟，<br>所以邏輯是先找出最大的值，<br>然後找第二大的值、第三大的值…</p>
+<p>也是基本分兩個迴圈：<br>外迴圈決定做幾輪比對，<br>沒有優化的狀況下，<br>array 有幾項就做幾輪。</p>
+<p>內迴圈為”兩兩比對”迴圈，<br>要注意的是兩兩比對的終點 index 會隨沒一輪外迴圈而左移，<br>因為每一輪的最右邊都是已知的最大值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = getTestArr(&#123; <span class="attr">max</span>: <span class="number">100</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> bubbleSort = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> cloneArr = [...arr];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> cloneLength = cloneArr.length;</span><br><span class="line">  <span class="keyword">const</span> cloneEndIndex = cloneLength - <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// cloneArr 有幾項就做幾輪</span></span><br><span class="line">  cloneArr.forEach(<span class="function">(<span class="params">num, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 兩兩比對的最後一個 index，</span></span><br><span class="line">    <span class="comment">// 外迴圈每做完一輪，兩兩比對就可以少比一個</span></span><br><span class="line">    <span class="keyword">const</span> endIndex = cloneEndIndex - i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; endIndex; j++) &#123;</span><br><span class="line">      <span class="keyword">const</span> pre = cloneArr[j];</span><br><span class="line">      <span class="keyword">const</span> next = cloneArr[j + <span class="number">1</span>];</span><br><span class="line">      <span class="keyword">if</span> (pre &gt; next) [cloneArr[j], cloneArr[j + <span class="number">1</span>]] = [cloneArr[j + <span class="number">1</span>], cloneArr[j]];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> cloneArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bubbleSort'</span>, bubbleSort(testArr));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<p>Bubble Sort 還可以增加對最佳狀況的判斷，<br>也就是大小一開始就排好的情形，<br>由內迴圈(兩兩比對迴圈)判斷，<br>只要某一輪兩兩比對都沒有成功交換過，<br>就代表 array 已經排序完成。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = getTestArr(&#123;</span><br><span class="line">  max: <span class="number">100</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> bubbleSortWithFlag = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> cloneArr = [...arr];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> cloneLength = cloneArr.length;</span><br><span class="line">  <span class="keyword">const</span> cloneEndIndex = cloneLength - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// flag 預設為 false</span></span><br><span class="line">  <span class="keyword">let</span> isSorted = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">// 有機會可以中斷迴圈，所以不用 forEach</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cloneLength &amp;&amp; !isSorted; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> endIndex = cloneEndIndex - i;</span><br><span class="line">    <span class="comment">// 每進一輪就將 flag 設 true，</span></span><br><span class="line">    <span class="comment">// 這樣只要兩兩比對迴圈一次都沒有交換，</span></span><br><span class="line">    <span class="comment">// 外迴圈下一輪就不會進來了</span></span><br><span class="line">    isSorted = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; endIndex; j++) &#123;</span><br><span class="line">      <span class="keyword">const</span> pre = cloneArr[j];</span><br><span class="line">      <span class="keyword">const</span> next = cloneArr[j + <span class="number">1</span>];</span><br><span class="line">      <span class="keyword">if</span> (pre &gt; next) &#123;</span><br><span class="line">        [cloneArr[j], cloneArr[j + <span class="number">1</span>]] = [cloneArr[j + <span class="number">1</span>], cloneArr[j]];</span><br><span class="line">        <span class="comment">// 只要兩兩比對有成功交換一次，</span></span><br><span class="line">        <span class="comment">// 就代表還不是最佳排序</span></span><br><span class="line">        isSorted = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> cloneArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`unSorted arr`</span>, testArr);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bubbleSortWithFlag arr'</span>, bubbleSortWithFlag(testArr));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序法（Insertion-Sort）"><a href="#插入排序法（Insertion-Sort）" class="headerlink" title="插入排序法（Insertion Sort）"></a>插入排序法（Insertion Sort）</h3><p>打麻將或完撲克牌時我們很自然會用的排序法，<br>假設從牌面的最左邊開始好了，<br>第一輪就會從左邊數來第二張牌開始，<br>姑且稱它為 “unsortedCard”，<br>第二輪 “unsortedCard” 就是左邊數來第三張牌…以此類推，<br>有 n 項，便有共 n-1 輪</p>
+<p>我們每一輪的任務便是，<br>讓 “unsortedCard” 一一跟它左邊的牌比大小並交換位置，<br>就像氣泡排序法一樣，<br>直到正確的位置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//// 這是我一開始自己思考後的解法</span></span><br><span class="line"><span class="keyword">const</span> insertionSort = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cloneArr = [...arr];</span><br><span class="line">  <span class="keyword">const</span> cloneLength = cloneArr.length;</span><br><span class="line">  <span class="comment">// 第一張牌沒有可以比的對象，</span></span><br><span class="line">  <span class="comment">// 所以從第二張牌開始進行插入排序</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; cloneLength; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> unsortedCard = cloneArr[i];</span><br><span class="line">    <span class="comment">// 這一輪 "unSortedCard" 的位置，</span></span><br><span class="line">    <span class="comment">// 有機會往左移動</span></span><br><span class="line">    <span class="keyword">let</span> unsortedIndex = i;</span><br><span class="line">    <span class="comment">// j 是往前第幾張牌的 index</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; i + <span class="number">1</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">const</span> sortedIndex = i - j;</span><br><span class="line">      <span class="keyword">if</span> (cloneArr[sortedIndex] &gt; unsortedCard) &#123;</span><br><span class="line">        [cloneArr[unsortedIndex], cloneArr[sortedIndex]] = [cloneArr[sortedIndex], cloneArr[unsortedIndex]];</span><br><span class="line">        <span class="comment">// unsortedCard 與左邊一張牌交換後，</span></span><br><span class="line">        <span class="comment">// 位置 index 也要更新</span></span><br><span class="line">        unsortedIndex--;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果 unsortedCard 比 sortedCard 大的話，</span></span><br><span class="line">        <span class="comment">// 那就是位置正確了</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cloneArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//// 這是參考範例後的解法</span></span><br><span class="line"><span class="comment">// 主要差在，既然我的內迴圈有用 break，</span></span><br><span class="line"><span class="comment">// 代表迴圈次數並不固定，</span></span><br><span class="line"><span class="comment">// 那就可以使用 while 迴圈</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> insertionSortWithWhile = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cloneArr = [...arr];</span><br><span class="line">  <span class="keyword">const</span> cloneLength = cloneArr.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; cloneLength; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> unsortedCard = cloneArr[i];</span><br><span class="line">    <span class="keyword">let</span> unsortedIndex = i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (cloneArr[unsortedIndex - <span class="number">1</span>] &gt; unsortedCard) &#123;</span><br><span class="line">      [cloneArr[unsortedIndex - <span class="number">1</span>], cloneArr[unsortedIndex]] = [cloneArr[unsortedIndex], cloneArr[unsortedIndex - <span class="number">1</span>]];</span><br><span class="line">      unsortedIndex--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> cloneArr;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'unsorted arr'</span>, testArr);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'insertionSort arr'</span>, insertionSort(testArr));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`insertionSortWithWhile arr`</span>, insertionSortWithWhile(testArr));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="http://huli.logdown.com/posts/2223627-review-the-classical-sort-algorithm-with-javascript" target="_blank" rel="noopener">http://huli.logdown.com/posts/2223627-review-the-classical-sort-algorithm-with-javascript</a></p>
+<p><a href="https://visualgo.net/en/sorting" target="_blank" rel="noopener">https://visualgo.net/en/sorting</a></p>
+<p><a href="https://hiskio.com/courses/127" target="_blank" rel="noopener">https://hiskio.com/courses/127</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/JavaScript/ES6-實踐經典排序法-1.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/JavaScript/ES6-實踐經典排序法-1.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/JavaScript/ES6-實踐經典排序法-1.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/Linux/Ubuntu-安裝-Node-js-Yarn.html" title="Ubuntu 安裝 Node.js, Yarn">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/JavaScript/JavaScript-中的-NaN-isNaN.html" title="JavaScript 中的 NaN, isNaN ">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

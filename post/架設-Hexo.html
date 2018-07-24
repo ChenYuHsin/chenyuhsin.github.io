@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>利用  GithHb Pages 架設 Hexo Blog | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="決定要架設一個自己的部落格來紀錄讀書心得與技術筆記，一方面方便自己日後回憶，另一方面也分享給有緣看到的朋友們。 我決定使用 Hexo。 因為它所有文章都是靜態網頁，讀取快、效率佳並且可以利用 GitHub 的 gh-pages 服務來託管產生出來的靜態部落格。更重要的是，它的開發者大神是我們台灣人啊！一定要支持一下的啊～">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用  GithHb Pages 架設 Hexo Blog">
+<meta property="og:url" content="https://blog.newtchen.me/post/架設-Hexo.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="決定要架設一個自己的部落格來紀錄讀書心得與技術筆記，一方面方便自己日後回憶，另一方面也分享給有緣看到的朋友們。 我決定使用 Hexo。 因為它所有文章都是靜態網頁，讀取快、效率佳並且可以利用 GitHub 的 gh-pages 服務來託管產生出來的靜態部落格。更重要的是，它的開發者大神是我們台灣人啊！一定要支持一下的啊～">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用  GithHb Pages 架設 Hexo Blog">
+<meta name="twitter:description" content="決定要架設一個自己的部落格來紀錄讀書心得與技術筆記，一方面方便自己日後回憶，另一方面也分享給有緣看到的朋友們。 我決定使用 Hexo。 因為它所有文章都是靜態網頁，讀取快、效率佳並且可以利用 GitHub 的 gh-pages 服務來託管產生出來的靜態部落格。更重要的是，它的開發者大神是我們台灣人啊！一定要支持一下的啊～">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">利用  GithHb Pages 架設 Hexo Blog</h1>
+      <section class="post-meta">
+  <time datetime="2015-04-26T05:43:23.000Z" itemprop="datePublished" class="post-date">
+      2015-04-26
+  </time>
+  
+  
+  on 
+  <a href='/tags/hexo/'>hexo</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.748Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <p>決定要架設一個自己的部落格來紀錄讀書心得與技術筆記，一方面方便自己日後回憶，另一方面也分享給有緣看到的朋友們。</p>
+<p>我決定使用 <a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">Hexo</a>。</p>
+<p>因為它所有文章都是靜態網頁，讀取快、效率佳並且可以利用 GitHub 的 gh-pages 服務來託管產生出來的靜態部落格。更重要的是，它的開發者大神是我們台灣人啊！一定要支持一下的啊～<br><a id="more"></a><br>簡單來說整個架設過程分兩個步驟，「設置好 GithHb Pages」和「設置好 hexo」。</p>
+<h2 id="設置-GithHb-Pages-環境"><a href="#設置-GithHb-Pages-環境" class="headerlink" title="設置 GithHb Pages 環境"></a>設置 GithHb Pages 環境</h2><h3 id="GitHub-Pages-有兩種"><a href="#GitHub-Pages-有兩種" class="headerlink" title="GitHub Pages 有兩種"></a>GitHub Pages 有兩種</h3><p>要使用 GitHub 所提供的網頁託管服務，有兩種方式：</p>
+<ol>
+<li>User/Organization Pages：<ul>
+<li>Repo 必須命名為 username.github.io</li>
+<li>使用 master 分支</li>
+<li>利用 <a href="http://username.github.io" target="_blank" rel="noopener">http://username.github.io</a> 即可瀏覽網頁</li>
+</ul>
+</li>
+<li>Projects Pages：<ul>
+<li>Repo 命名沒有特殊要求</li>
+<li>使用 gh-pages 分支</li>
+<li>利用 <a href="http://username.github.io/projectname" target="_blank" rel="noopener">http://username.github.io/projectname</a> 瀏覽網頁</li>
+</ul>
+</li>
+</ol>
+<h3 id="建立存放部落格的-Repo"><a href="#建立存放部落格的-Repo" class="headerlink" title="建立存放部落格的 Repo"></a>建立存放部落格的 Repo</h3><p>在自己的 GitHub 帳號中新創一個用來放 Hexo Blog 的 Repo。可以自行選擇要用哪一種 GitHub Pages方式，不過要注意一個帳號只可以創一個名稱為 username.github.io 的 Repo。</p>
+<h3 id="安裝-Git"><a href="#安裝-Git" class="headerlink" title="安裝 Git"></a>安裝 Git</h3><p>請詳閱 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git Downloads</a>，裝好 Git ，以後就可以直接輕鬆把在電腦上編寫的新內容推上 GitHub Pages。</p>
+<h2 id="設置本地端-Hexo環境"><a href="#設置本地端-Hexo環境" class="headerlink" title="設置本地端 Hexo環境"></a>設置本地端 Hexo環境</h2><h3 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h3><ol>
+<li>安裝 Node.js：<ul>
+<li>利用 google 到官網下載安裝檔，並且執行即可。</li>
+</ul>
+</li>
+<li>利用 npm 裝 Hexo<ul>
+<li>目前 Node.js 都已經內建好 npm，所以這時候可以直接下指令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="建立本地-Hexo-資料夾"><a href="#建立本地-Hexo-資料夾" class="headerlink" title="建立本地 Hexo 資料夾"></a>建立本地 Hexo 資料夾</h3><p>選一個喜歡的位置，創一個資料夾（例如 “D/hexo_blog”）後，就可以按右鍵點擊 git bash 來輸入下列指令：</p>
+<ol>
+<li><p>初始化hexo</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝相關套件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>最基礎的hexo blog環境這樣就算建立完成了。</p>
+<ol start="3">
+<li><p>讓blog在本地運行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g   //生成靜態頁面至public資料夾</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>開啟本地伺服器</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>接著用習慣的瀏覽器開啟localhost:4000，便可以預覽 Hexo Blog 目前的模樣了。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/架設-Hexo.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/架設-Hexo.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/架設-Hexo.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/必須熟記的css-selector.html" title="必須熟記的 CSS Selector">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/使用github-SSH-key省去Deploy時需要輸入帳密.html" title="使用github SSH key省去Deploy時需要輸入帳密">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

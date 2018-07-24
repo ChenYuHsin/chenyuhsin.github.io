@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Ubuntu oh-my-zsh 安裝 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ubuntu oh-my-zsh 安裝Ubuntu 預設的 bashUbuntu 預設 terminal 為 /bin/bash，是已經比 window 上的終端機好用不少，但整體而言在使用方便性、擴充性與外觀上還是遜色於 zsh 不少 oh-my-zsh基本上好像很少看到有人在使用單純的 zsh ，似乎是設定非常複雜的關係，於是我也安裝目前主流框架： oh-my-zsh 安裝 zshsudo a">
+<meta name="keywords" content="zsh,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu oh-my-zsh 安裝">
+<meta property="og:url" content="https://blog.newtchen.me/post/Ubuntu-oh-my-zsh-安裝.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Ubuntu oh-my-zsh 安裝Ubuntu 預設的 bashUbuntu 預設 terminal 為 /bin/bash，是已經比 window 上的終端機好用不少，但整體而言在使用方便性、擴充性與外觀上還是遜色於 zsh 不少 oh-my-zsh基本上好像很少看到有人在使用單純的 zsh ，似乎是設定非常複雜的關係，於是我也安裝目前主流框架： oh-my-zsh 安裝 zshsudo a">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu oh-my-zsh 安裝">
+<meta name="twitter:description" content="Ubuntu oh-my-zsh 安裝Ubuntu 預設的 bashUbuntu 預設 terminal 為 /bin/bash，是已經比 window 上的終端機好用不少，但整體而言在使用方便性、擴充性與外觀上還是遜色於 zsh 不少 oh-my-zsh基本上好像很少看到有人在使用單純的 zsh ，似乎是設定非常複雜的關係，於是我也安裝目前主流框架： oh-my-zsh 安裝 zshsudo a">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Ubuntu oh-my-zsh 安裝</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-13T08:13:16.000Z" itemprop="datePublished" class="post-date">
+      2018-07-13
+  </time>
+  
+  
+  on 
+  <a href='/tags/zsh/'>zsh</a>,
+  
+  <a href='/tags/Ubuntu/'>Ubuntu</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.744Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <h1 id="Ubuntu-oh-my-zsh-安裝"><a href="#Ubuntu-oh-my-zsh-安裝" class="headerlink" title="Ubuntu oh-my-zsh 安裝"></a>Ubuntu oh-my-zsh 安裝</h1><h2 id="Ubuntu-預設的-bash"><a href="#Ubuntu-預設的-bash" class="headerlink" title="Ubuntu 預設的 bash"></a>Ubuntu 預設的 bash</h2><p>Ubuntu 預設 terminal 為 <code>/bin/bash</code>，<br>是已經比 window 上的終端機好用不少，<br>但整體而言在使用方便性、擴充性與外觀上還是遜色於 <code>zsh</code> 不少</p>
+<h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><p>基本上好像很少看到有人在使用單純的 <code>zsh</code> ，<br>似乎是設定非常複雜的關係，<br>於是我也安裝目前主流框架： <code>oh-my-zsh</code></p>
+<h3 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install zsh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 確認 zsh 是否存在</span></span><br><span class="line">zsh --version</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> zsh 設為預設 shell</span></span><br><span class="line">chsh -s /bin/zsh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 檢查目前的 shell 是誰，</span></span><br><span class="line">echo $SHELL</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果出現的不是 /user/bin/zsh，改用</span></span><br><span class="line">sudo vim /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 把第一行跟最後一行後面改為 zsh</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 改完大概會像這樣</span></span><br><span class="line">root:x:0:0:root:/root:/bin/zsh</span><br><span class="line">...</span><br><span class="line">...中略</span><br><span class="line">...</span><br><span class="line">username:x:1000:1000:newtchen,,,:/home/username:/bin/zsh</span><br></pre></td></tr></table></figure>
+<p>有時候可能需要重新開機，<br>才可以看到預設 shell 改變為 zsh</p>
+<h3 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
+<h3 id="更改-oh-my-zsh-主題"><a href="#更改-oh-my-zsh-主題" class="headerlink" title="更改 oh-my-zsh 主題"></a>更改 oh-my-zsh 主題</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 找到 ZSH_THEME= 開頭那一行，改成</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或是安裝 https://github.com/caiogondim/bullet-train.zsh</span></span><br></pre></td></tr></table></figure>
+<h3 id="安裝o-h-my-zsh-主題所需字體"><a href="#安裝o-h-my-zsh-主題所需字體" class="headerlink" title="安裝o h-my-zsh 主題所需字體"></a>安裝o h-my-zsh 主題所需字體</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install fonts-powerline</span><br></pre></td></tr></table></figure>
+<h2 id="zsh-plugin"><a href="#zsh-plugin" class="headerlink" title="zsh plugin"></a>zsh plugin</h2><p>最後在安裝一些可以增加工作效率的 zsh 工具</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install autojump</span><br><span class="line"></span><br><span class="line">sudo apt install fasd</span><br><span class="line"></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br><span class="line"></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<h3 id="修改-zshrc"><a href="#修改-zshrc" class="headerlink" title="修改 .zshrc"></a>修改 .zshrc</h3><p>要啟用的 zsh plugins 要在寫在設定檔中才能發會作用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 找到 plugins=() 區塊，改成</span></span><br><span class="line">plugins=(</span><br><span class="line">  git extract autojump zsh-autosuggestions zsh-syntax-highlighting</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 啟用設定</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.jianshu.com/p/2c9cc1eb2548" target="_blank" rel="noopener">https://www.jianshu.com/p/2c9cc1eb2548</a></p>
+<p><a href="https://www.jianshu.com/p/ba090b3a7035" target="_blank" rel="noopener">https://www.jianshu.com/p/ba090b3a7035</a></p>
+<p><a href="https://github.com/zsh-users/zsh-syntax-highlighting" target="_blank" rel="noopener">https://github.com/zsh-users/zsh-syntax-highlighting</a></p>
+<p><a href="https://juejin.im/post/5b216263f265da6e44326959" target="_blank" rel="noopener">https://juejin.im/post/5b216263f265da6e44326959</a></p>
+<p><a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank" rel="noopener">https://github.com/zsh-users/zsh-autosuggestions</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Ubuntu-oh-my-zsh-安裝.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Ubuntu-oh-my-zsh-安裝.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Ubuntu-oh-my-zsh-安裝.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/VS-Code-使用-zsh-當作-terminal.html" title="VS Code 使用 zsh 當作 terminal">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/Hexo3-在文章中插入圖片.html" title="Hexo3 在文章中插入圖片">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

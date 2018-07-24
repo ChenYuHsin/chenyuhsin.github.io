@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Caesar Cipher 凱撒密碼 | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Caesar Cipher 凱撒密碼concept// return a new stringfunction caesarCipher (string, num) &amp;#123;    ...&amp;#125; 給一字串與偏移量，會返回經過偏移的新字串 string 有大小寫，num 有正負數 Caesar Cipher example  Bee, 3 =&amp;gt; Ehh  B 向後三位變 Ee 向後三">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Caesar Cipher 凱撒密碼">
+<meta property="og:url" content="https://blog.newtchen.me/post/Caesar-Cipher.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Caesar Cipher 凱撒密碼concept// return a new stringfunction caesarCipher (string, num) &amp;#123;    ...&amp;#125; 給一字串與偏移量，會返回經過偏移的新字串 string 有大小寫，num 有正負數 Caesar Cipher example  Bee, 3 =&amp;gt; Ehh  B 向後三位變 Ee 向後三">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531899604263.png?raw=true">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caesar Cipher 凱撒密碼">
+<meta name="twitter:description" content="Caesar Cipher 凱撒密碼concept// return a new stringfunction caesarCipher (string, num) &amp;#123;    ...&amp;#125; 給一字串與偏移量，會返回經過偏移的新字串 string 有大小寫，num 有正負數 Caesar Cipher example  Bee, 3 =&amp;gt; Ehh  B 向後三位變 Ee 向後三">
+<meta name="twitter:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531899604263.png?raw=true">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Caesar Cipher 凱撒密碼</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-24T14:40:55.000Z" itemprop="datePublished" class="post-date">
+      2018-07-24
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <h1 id="Caesar-Cipher-凱撒密碼"><a href="#Caesar-Cipher-凱撒密碼" class="headerlink" title="Caesar Cipher 凱撒密碼"></a>Caesar Cipher 凱撒密碼</h1><h2 id="concept"><a href="#concept" class="headerlink" title="concept"></a>concept</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// return a new string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">caesarCipher</span> (<span class="params">string, num</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>給一字串與偏移量，<br>會返回經過偏移的新字串</p>
+<p>string 有大小寫，<br>num 有正負數</p>
+<h3 id="Caesar-Cipher-example"><a href="#Caesar-Cipher-example" class="headerlink" title="Caesar Cipher example"></a>Caesar Cipher example</h3><blockquote>
+<p> Bee, 3 =&gt; Ehh</p>
+</blockquote>
+<p>B 向後三位變 E<br>e 向後三位變 h<br>以此類推…</p>
+<p><img src="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1531899604263.png?raw=true" alt="1531899604263"><br>圖片來源：<a href="https://www.wikiwand.com/zh-tw/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC" target="_blank" rel="noopener">https://www.wikiwand.com/zh-tw/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC</a></p>
+<h2 id="example-code"><a href="#example-code" class="headerlink" title="example code"></a>example code</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> caesarCipher = <span class="function">(<span class="params">str, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// % 的計算不管正負，最後</span></span><br><span class="line">    <span class="comment">// 結果的正負號會與被除數一樣</span></span><br><span class="line">    num = num % <span class="number">26</span>;</span><br><span class="line">    <span class="keyword">const</span> alphabet = [...<span class="string">`abcdefghijklmnopqrstuvwxyz`</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> _getNewIndex = <span class="function">(<span class="params">currentIndex, shiftNum</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> newIndex = (currentIndex + shiftNum) % <span class="number">26</span>;</span><br><span class="line">        <span class="keyword">return</span> newIndex &lt; <span class="number">0</span> ? newIndex + <span class="number">26</span> : newIndex;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> _getLetterInCipher = <span class="function">(<span class="params">letter, i</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> currentLetterIndex = alphabet.indexOf(letter);</span><br><span class="line">        <span class="keyword">if</span> (currentLetterIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 如果找不到， indexOf 的結果會是 -1，代表該字非英文字母</span></span><br><span class="line">            <span class="keyword">return</span> letter;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> newIndex = _getNewIndex(</span><br><span class="line">                currentLetterIndex,</span><br><span class="line">                num</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">const</span> newLetter = alphabet[newIndex];</span><br><span class="line">            <span class="comment">// 判斷該字母在原始 str 中是否為大寫</span></span><br><span class="line">            <span class="keyword">const</span> isUpperCase =</span><br><span class="line">                str[i] === letter.toUpperCase();</span><br><span class="line">            <span class="keyword">return</span> isUpperCase</span><br><span class="line">                ? newLetter.toUpperCase()</span><br><span class="line">                : newLetter;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將 str 一個個字母經過位移後，再組合成新 string</span></span><br><span class="line">    <span class="keyword">let</span> newStr = <span class="string">``</span>;</span><br><span class="line">    str.toLowerCase()</span><br><span class="line">        .split(<span class="string">``</span>)</span><br><span class="line">        .forEach(</span><br><span class="line">            (letter, i) =&gt;</span><br><span class="line">                (newStr += _getLetterInCipher(letter, i))</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newStr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(caesarCipher(<span class="string">'A*-*BcDe'</span>, <span class="number">25</span>));</span><br><span class="line"><span class="built_in">console</span>.log(caesarCipher(<span class="string">'apple'</span>, <span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(caesarCipher(<span class="string">'Bee!!'</span>, <span class="number">-28</span>));</span><br></pre></td></tr></table></figure>
+<p>最需要注意的就是大小寫判斷的地方，<br>因為我們的 alphabet 陣列為了方便，<br>只有列出小寫的字母。</p>
+<h2 id="Code-from-Learning-Algorithms"><a href="#Code-from-Learning-Algorithms" class="headerlink" title="Code from Learning Algorithms"></a>Code from <code>Learning Algorithms</code></h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">caesarCipher</span>(<span class="params">str,num</span>) </span>&#123;</span><br><span class="line">  num = num % <span class="number">26</span>;</span><br><span class="line">  <span class="keyword">var</span> lowerCaseString = str.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> alphabet = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span>.split(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">var</span> newString = <span class="string">''</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lowerCaseString.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> currentLetter = lowerCaseString[i];</span><br><span class="line">    <span class="keyword">if</span> (currentLetter === <span class="string">' '</span>) &#123;</span><br><span class="line">      newString += currentLetter;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> currentIndex = alphabet.indexOf(currentLetter);</span><br><span class="line">    <span class="keyword">var</span> newIndex = currentIndex + num;</span><br><span class="line">    <span class="keyword">if</span> (newIndex &gt; <span class="number">25</span>) newIndex = newIndex - <span class="number">26</span>;</span><br><span class="line">    <span class="keyword">if</span> (newIndex &lt; <span class="number">0</span>) newIndex = <span class="number">26</span> + newIndex;</span><br><span class="line">    <span class="keyword">if</span> (str[i] === str[i].toUpperCase()) &#123;</span><br><span class="line">      newString += alphabet[newIndex].toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> newString += alphabet[newIndex];</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> newString;</span><br><span class="line">&#125;</span><br><span class="line">caesarCipher(<span class="string">'Zoo Keeper'</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.wikiwand.com/zh-tw/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC" target="_blank" rel="noopener">https://www.wikiwand.com/zh-tw/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Caesar-Cipher.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Caesar-Cipher.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Caesar-Cipher.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/Fibonacci.html" title="Fibonacci">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/Binary-Search.html" title="Binary Search">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

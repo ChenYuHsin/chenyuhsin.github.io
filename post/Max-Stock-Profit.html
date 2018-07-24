@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Max Stock Profit | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Max Stock ProfitConcept// return max profitfunction maxStockProfit (priceArr) &amp;#123;    ...&amp;#125; 輸入一個陣列，代表股票一天個時間點的價錢，求最高利潤， 利潤 &amp;lt;  0 的話，一律給 -1 Solution Codeconst maxStockProfit = arr =&amp;gt; &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Max Stock Profit">
+<meta property="og:url" content="https://blog.newtchen.me/post/Max-Stock-Profit.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="Max Stock ProfitConcept// return max profitfunction maxStockProfit (priceArr) &amp;#123;    ...&amp;#125; 輸入一個陣列，代表股票一天個時間點的價錢，求最高利潤， 利潤 &amp;lt;  0 的話，一律給 -1 Solution Codeconst maxStockProfit = arr =&amp;gt; &amp;#123;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1532185393345.png?raw=true">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Max Stock Profit">
+<meta name="twitter:description" content="Max Stock ProfitConcept// return max profitfunction maxStockProfit (priceArr) &amp;#123;    ...&amp;#125; 輸入一個陣列，代表股票一天個時間點的價錢，求最高利潤， 利潤 &amp;lt;  0 的話，一律給 -1 Solution Codeconst maxStockProfit = arr =&amp;gt; &amp;#123;">
+<meta name="twitter:image" content="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1532185393345.png?raw=true">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">Max Stock Profit</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-24T14:45:56.000Z" itemprop="datePublished" class="post-date">
+      2018-07-24
+  </time>
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <h1 id="Max-Stock-Profit"><a href="#Max-Stock-Profit" class="headerlink" title="Max Stock Profit"></a>Max Stock Profit</h1><h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// return max profit</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxStockProfit</span> (<span class="params">priceArr</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>輸入一個陣列，<br>代表股票一天個時間點的價錢，<br>求最高利潤，</p>
+<p>利潤 &lt;  0 的話，一律給 -1</p>
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> maxStockProfit = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> length = arr.length;</span><br><span class="line">    <span class="keyword">const</span> profitList = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> buyingPrice = arr[i];</span><br><span class="line">        <span class="keyword">let</span> profit = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; length; j++) &#123;</span><br><span class="line">            <span class="keyword">const</span> sellPrice = arr[j];</span><br><span class="line">            <span class="keyword">const</span> possibleProfit = sellPrice - buyingPrice;</span><br><span class="line">            <span class="keyword">if</span> (possibleProfit &gt; profit) &#123;</span><br><span class="line">                profit = possibleProfit;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        profitList.push(profit);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profitList.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b).reverse()[<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Code-from-Learning-Algorithms"><a href="#Code-from-Learning-Algorithms" class="headerlink" title="Code from Learning Algorithms"></a>Code from <code>Learning Algorithms</code></h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxStockProfit</span> (<span class="params">pricesArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> maxProfit = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">var</span> buyPrice = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> sellPrice = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> changeBuyPrice = <span class="literal">true</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; pricesArr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (changeBuyPrice) buyPrice = pricesArr[i];</span><br><span class="line">    sellPrice = pricesArr[i + <span class="number">1</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (sellPrice &lt; buyPrice) &#123;</span><br><span class="line">      changeBuyPrice = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> tempProfit = sellPrice - buyPrice;</span><br><span class="line">      <span class="keyword">if</span> (tempProfit &gt; maxProfit) maxProfit = tempProfit;</span><br><span class="line">      changeBuyPrice = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">maxStockProfit([<span class="number">10</span>, <span class="number">18</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">16</span>, <span class="number">12</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="Fibonacci-with-Memorization"><a href="#Fibonacci-with-Memorization" class="headerlink" title="Fibonacci with Memorization"></a>Fibonacci with Memorization</h2><h3 id="單純的-Fibonacci-函數屬於-O-n-2"><a href="#單純的-Fibonacci-函數屬於-O-n-2" class="headerlink" title="單純的 Fibonacci 函數屬於 O(n^2)"></a>單純的 Fibonacci 函數屬於 O(n^2)</h3><p>O(n^2) 的特性是當數入的數字越大時，<br>運算時間會爆炸性增長…</p>
+<blockquote>
+<p>fibonacci(10) ，需要執行 109 次該函式<br>fibonacci(20) ，需要執行 13259 次該函式<br>fibonacci(30) ，需要執行 1664079 次該函式</p>
+</blockquote>
+<p>所以我們前面的函式還有很大的改善空間。</p>
+<h3 id="Memoization-cache"><a href="#Memoization-cache" class="headerlink" title="Memoization, cache"></a>Memoization, cache</h3><p>我們可以使用類似 cache 的做法，<br>每次要運算 fibonacci(num) 時：</p>
+<ul>
+<li>先檢驗 fibonacci(num) 在 cache 中是否已經有結果</li>
+<li>如果有，則為該次 fibonacci(num) 之解</li>
+<li>如果沒有，另行計算本次 fibonacci(num) 的解，而且算出來後要放到 cache 中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原始的 fibonacci</span></span><br><span class="line"><span class="keyword">const</span> fibonacci = <span class="function"><span class="params">index</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(index - <span class="number">1</span>) + fibonacci(index - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fibMemo = <span class="function"><span class="params">index</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> _cache = [];</span><br><span class="line">    <span class="keyword">const</span> _fib = <span class="function"><span class="params">index</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (_cache[index]) &#123;</span><br><span class="line">            <span class="keyword">return</span> _cache[index];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            _cache[<span class="number">0</span>] = _cache[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            _cache[index] =</span><br><span class="line">                _fib(index - <span class="number">1</span>) + _fib(index - <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> _cache[index];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _fib(index);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibMemoC</span>(<span class="params">index, cache</span>) </span>&#123;</span><br><span class="line">    cache = cache || [];</span><br><span class="line">    <span class="keyword">if</span> (cache[index]) <span class="keyword">return</span> cache[index];</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            cache[index] =</span><br><span class="line">                fibMemo(index - <span class="number">1</span>, cache) +</span><br><span class="line">                fibMemo(index - <span class="number">2</span>, cache);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cache[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'a'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fibonacci(<span class="number">20</span>));</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'a'</span>);</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'b'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fibMemo(<span class="number">20</span>));</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'b'</span>);</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'c'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fibMemoC(<span class="number">20</span>));</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'c'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------'</span>);</span><br></pre></td></tr></table></figure>
+<p>output:</p>
+<p><img src="https://github.com/sss63232/git-notebook/blob/master/JavaScript/Learning%20Algorithms%20in%20JavaScript%20from%20Scratch/1532185393345.png?raw=true" alt="1532185393345"></p>
+<p>Fibonacci with Memorization 這種函式的演算法是屬於 O(n)，<br>運算的時間會只會以線性成長，<br>效率方面的表現優秀</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.udemy.com/learning-algorithms-in-javascript-from-scratch/" target="_blank" rel="noopener">https://www.udemy.com/learning-algorithms-in-javascript-from-scratch/</a></p>
+<p><a href="https://pjchender.blogspot.com/2017/09/fibonacci-cache-memoization.html" target="_blank" rel="noopener">https://pjchender.blogspot.com/2017/09/fibonacci-cache-memoization.html</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/Max-Stock-Profit.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/Max-Stock-Profit.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/Max-Stock-Profit.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/Mean-Median-Mode.html" title="Mean Median Mode">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/is-Palindrome.html" title="is Palindrome">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>

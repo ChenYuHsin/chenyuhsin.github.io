@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>VS Code 使用 zsh 當作 terminal | New&#39;s news</title>
+  <meta name="description" content="紀錄我所學習到的新知，作為自己的記憶儲存點，也希望把知識分享給恰巧進來的朋友們。" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VS Code with zshinstall zsh可以看我的上一篇文章 install Powerline fontgit clone https://github.com/powerline/fonts.git --depth=1cd fonts./install.shcd ..rm -rf fonts User Settings in VS Code開啟 VS Code 的 user se">
+<meta name="keywords" content="zsh,VS Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Code 使用 zsh 當作 terminal">
+<meta property="og:url" content="https://blog.newtchen.me/post/VS-Code-使用-zsh-當作-terminal.html">
+<meta property="og:site_name" content="New&#39;s news">
+<meta property="og:description" content="VS Code with zshinstall zsh可以看我的上一篇文章 install Powerline fontgit clone https://github.com/powerline/fonts.git --depth=1cd fonts./install.shcd ..rm -rf fonts User Settings in VS Code開啟 VS Code 的 user se">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-07-24T15:20:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VS Code 使用 zsh 當作 terminal">
+<meta name="twitter:description" content="VS Code with zshinstall zsh可以看我的上一篇文章 install Powerline fontgit clone https://github.com/powerline/fonts.git --depth=1cd fonts./install.shcd ..rm -rf fonts User Settings in VS Code開啟 VS Code 的 user se">
+  <!-- build:css css/screen.css -->
+  <link rel="stylesheet" href="/css/screen.css">
+  <!-- 自訂樣式-->
+  <link rel="stylesheet" href="/css/newtchen.css">
+  
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+  <meta name="generator" content="New's news">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="main-header post-head no-cover" >
+    <nav class="main-nav  clearfix">
+        
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/atom.xml">Subscribe</a>
+    </nav>
+    
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+  
+
+<main id="content" class="content" role="main">
+  <article class="post" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">VS Code 使用 zsh 當作 terminal</h1>
+      <section class="post-meta">
+  <time datetime="2018-07-13T08:17:08.000Z" itemprop="datePublished" class="post-date">
+      2018-07-13
+  </time>
+  
+  
+  on 
+  <a href='/tags/zsh/'>zsh</a>,
+  
+  <a href='/tags/VS-Code/'>VS Code</a>
+  
+  
+</section>
+
+    </header>
+    <section class="post-content" itemprop="description articleBody">
+      
+
+      
+      <section class="post-updated">
+  Last updated on <time datetime="2018-07-24T15:20:19.744Z" itemprop="dateModified">
+      2018-07-24
+  </time>
+</section>
+
+      
+      <h1 id="VS-Code-with-zsh"><a href="#VS-Code-with-zsh" class="headerlink" title="VS Code with zsh"></a>VS Code with zsh</h1><h2 id="install-zsh"><a href="#install-zsh" class="headerlink" title="install zsh"></a>install zsh</h2><p>可以看我的上一篇文章</p>
+<h2 id="install-Powerline-font"><a href="#install-Powerline-font" class="headerlink" title="install Powerline font"></a>install Powerline font</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line">cd fonts</span><br><span class="line">./install.sh</span><br><span class="line">cd ..</span><br><span class="line">rm -rf fonts</span><br></pre></td></tr></table></figure>
+<h2 id="User-Settings-in-VS-Code"><a href="#User-Settings-in-VS-Code" class="headerlink" title="User Settings in VS Code"></a>User Settings in VS Code</h2><p>開啟 VS Code 的 user settings，<br>修改內容，<br>加入下面兩項</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// other settings...</span></span><br><span class="line">    <span class="string">"terminal.integrated.fontFamily"</span>: <span class="string">"Source Code Pro for Powerline"</span>,</span><br><span class="line">    <span class="string">"terminal.integrated.fontSize"</span>: <span class="number">14</span> <span class="comment">// decided by yourself</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.jazz321254.com/visual-studio-code-zsh/" target="_blank" rel="noopener">https://www.jazz321254.com/visual-studio-code-zsh/</a></p>
+<p><a href="https://medium.com/@wifferlin0505/%E5%9C%A8-visual-studio-code-terminal-%E4%B8%AD%E4%BD%BF%E7%94%A8-oh-my-zsh-799cb106df75" target="_blank" rel="noopener">https://medium.com/@wifferlin0505/%E5%9C%A8-visual-studio-code-terminal-%E4%B8%AD%E4%BD%BF%E7%94%A8-oh-my-zsh-799cb106df75</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>NewtChen</h4>
+    <p>const ME = new Person({ SeriousName = `Chen Yu-Hsin`, CasualName = `Newt`, Email = `s63232@gmail.com` });</p>
+    
+    <div class="author-meta">
+      <span class="author-location icon-location">Taiwan</span>
+      <span class="author-link icon-link"><a href="chenyuhsin.ml">chenyuhsin.ml</a></span>
+    
+      <section>
+        
+          <a href="https://twitter.com/s63232" class="author-social">twitter</a>
+        
+          <a href="https://github.com/sss63232" class="author-social">github</a>
+        
+      </section>
+    </div>
+</section>
+
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://blog.newtchen.me/post/VS-Code-使用-zsh-當作-terminal.html"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.newtchen.me/post/VS-Code-使用-zsh-當作-terminal.html"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.newtchen.me/post/VS-Code-使用-zsh-當作-terminal.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+  
+  <a class="newer-posts" href="/post/Big-O-Notation-Time-Complexity-衡量程式碼效率.html" title="Big O Notation, Time Complexity 衡量程式碼效率">
+    ← Newer Post
+  </a>
+  
+  <span class="page-number">•</span>
+  
+  <a class="older-posts" href="/post/Ubuntu-oh-my-zsh-安裝.html" title="Ubuntu oh-my-zsh 安裝">
+      Older Post →
+  </a>
+  
+</nav>
+
+  
+<div id="comment" class="comments-area">
+    <h2 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h2>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+
+</main>
+
+
+  <footer class="site-footer clearfix">
+ <section class="copyright">
+ 	<a href="/">
+ 		New's news
+ 	</a> 
+ 	&copy; 2018 &bull; All rights reserved.
+ </section>
+ <section class="poweredby">
+ 	Proudly published with 
+ 		<a class="icon-ghost" href="http://zespia.tw/hexo/"> 
+ 			Hexo
+ 		</a>
+ </section>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.0.3.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'newchen';
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+</html>
